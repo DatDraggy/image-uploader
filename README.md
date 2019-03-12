@@ -1,2 +1,4 @@
 # image-uploader
-ShareX uploader for myself
+ShareX uploader
+
+Work in progress. Use at your own risk :P

@@ -15,4 +15,4 @@ $mimes = array('jpg'  => 'image/jpeg',
 $ext = explode('.', $file)[1];
 
 header('Content-Type: '. $mimes[$ext]);
-file_get_contents("{$config['saveDir']}/$ext/$file");
+echo file_get_contents("{$config['saveDir']}/$ext/$file");

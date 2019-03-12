@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/config/config.php';
 
 if (!isset($_POST['password']) || $_POST['password'] !== $config['password']) {
@@ -28,10 +27,6 @@ function newFileName($ext) {
   $an = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   $rand = substr(str_shuffle($an), 0, 7);
 
-  if (!file_exists($config['saveDir'] . '/' . $ext)) {
-    mkdir($config['saveDir'] . '/' . $ext);
-  }
-
   if (file_exists("{$config['saveDir']}/$ext/$rand.$ext")) {
     return newFileName($ext);
   } else {
@@ -45,15 +40,18 @@ function saveImage($mimeType, $tempFileName) {
   $ext = $config['allowedTypes'][$mimeType];
   $rand = newFileName($ext);
 
+  if (!file_exists($config['saveDir'] . '/' . $ext)) {
+    mkdir($config['saveDir'] . '/' . $ext);
+  }
 
   if (move_uploaded_file($tempFileName, "{$config['saveDir']}/$ext/$rand.$ext")) {
     die(json_encode(array(
+      'status' => '200',
       'image' => array(
         'extension' => $ext,
         'name'      => $rand
       )
     )));
-    die('success,' . (RAW_IMAGE_LINK ? $config['saveDir'] . "$type/$rand.$type" : ($type == 'png' ? '' : substr($type, 0, 1) . '/') . "$rand" . (IMAGE_EXTENSION ? ".$type" : '')));
   }
 
   header('Status: 500');

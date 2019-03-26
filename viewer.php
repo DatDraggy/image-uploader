@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '512M');
 require_once(__DIR__ . '/config/config.php');
 
 if (isset($_GET['file']) && !empty($_GET['file'])) {

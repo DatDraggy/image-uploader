@@ -15,3 +15,6 @@ RewriteRule ^(.*)$ /images/mp4/$1 [L]
 
 RewriteCond %{REQUEST_URI} \.(png)$ [NC]
 RewriteRule ^(.*)$ /images/png/$1 [L]
+
+RewriteCond %{REQUEST_URI} \.(webm)$ [NC]
+RewriteRule ^(.*)$ /images/webm/$1 [L]

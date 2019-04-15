@@ -1,4 +1,5 @@
 <?php
+header('Cache-Control: max-age=0');
 require_once __DIR__ . '/config/config.php';
 
 if (!isset($_POST['password']) || $_POST['password'] !== $config['password']) {

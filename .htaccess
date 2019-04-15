@@ -1,3 +1,17 @@
+ErrorDocument 404 "404 - Not Found"
+php_value post_max_size 500M
+php_value upload_max_filesize 500M
+
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.*) /viewer.php?file=$1 [L]
+
+RewriteCond %{REQUEST_URI} \.(gif)$ [NC]
+RewriteRule ^(.*)$ /images/gif/$1 [L]
+
+RewriteCond %{REQUEST_URI} \.(jpg)$ [NC]
+RewriteRule ^(.*)$ /images/jpg/$1 [L]
+
+RewriteCond %{REQUEST_URI} \.(mp4)$ [NC]
+RewriteRule ^(.*)$ /images/mp4/$1 [L]
+
+RewriteCond %{REQUEST_URI} \.(png)$ [NC]
+RewriteRule ^(.*)$ /images/png/$1 [L]

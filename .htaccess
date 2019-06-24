@@ -1,5 +1,4 @@
 ErrorDocument 404 "404 - Not Found"
-AddType application/x-httpd-php .html .htm
 php_value post_max_size 500M
 php_value upload_max_filesize 500M
 
